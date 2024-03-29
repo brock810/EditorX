@@ -1,0 +1,154 @@
+.homepage-container {
+    color: #ffffff;
+    padding: 0; /* Remove padding to fit the video */
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 0;
+    overflow: hidden; /* Ensure the video doesn't overflow */
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-image: url('./Background2.jpg'); /* Background image */
+    background-attachment: fixed; /* Ensure the background remains fixed */
+    background-repeat: no-repeat;
+    perspective: 1000px; 
+}
+
+.homepage-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3); /* Overlay for better contrast */
+}
+
+@media (min-width: 768px) {
+  .homepage-container::before {
+      background: none; /* Disable overlay on larger screens */
+  }
+}
+
+.homepage-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  opacity: 0;
+  animation: fadeIn 1s ease forwards;
+
+}
+
+.homepage-content h2 {
+    font-size: 40px; /* Keep the font size */
+    margin-bottom: 10px; /* Keep the margin */
+    color: #000000; /* Light gray title font color */
+    font-weight: 600; /* Medium font weight for better readability */
+    letter-spacing: 0.5px; /* Add letter spacing for improved legibility */
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add text shadow for contrast */
+  }
+  
+  .homepage-content p {
+    font-size: 20px; /* Keep the font size */
+    margin-bottom: 55px; /* Keep the margin */
+    margin-left: 13.6px;
+    font-weight: bold;
+    color: #000000; /* Light gray paragraph font color */
+    letter-spacing: 0.25px; /* Add letter spacing for improved legibility */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add text shadow for contrast */
+  }
+  
+
+.homepage-button {
+    color: #ffffff; /* White text color */
+    padding: 12px 20px;
+    margin: 0 10px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease; /* Smooth transition on hover */
+    border: none; /* Remove default border */
+    cursor: pointer; /* Change cursor on hover */
+    background-image: linear-gradient(to bottom, #ffbb00, #ff8800); /* Gradient background */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Add shadow */
+  }
+  
+  .homepage-button:hover {
+    background-image: linear-gradient(to bottom, #ff8800, #ff5500); /* Darker gradient on hover */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Larger shadow on hover */
+  }
+  
+
+  .video-background {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% - 164px);
+    max-width: calc(100% - 164px);
+    height: auto;
+    z-index: -2;
+    background-attachment: fixed;
+    opacity: 0; /* Initially hidden */
+    animation: fadeInVideo 2s ease forwards; /* Fade-in animation */
+}
+
+@keyframes fadeInVideo {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+.video-background video {
+    width: 100%;
+    height: auto;
+}
+
+  
+  
+  .homepage-content {
+    position: relative; /* Position other content relative to the video background */
+    z-index: 1; /* Set a higher z-index to ensure it's above the video background */
+  }
+  
+  .homepage-link {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    margin: 0 20px;
+    font-size: 19px;
+    font-weight: bold;
+    transition: transform 0.5s ease; /* Add transition */
+  }
+  
+  .homepage-link:active {
+    transform: scale(0.9); /* Zoom out on click */
+  }
+  
+  @keyframes zoomIn {
+    0% {
+      transform: scale(0.9);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}

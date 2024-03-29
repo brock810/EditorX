@@ -1,0 +1,89 @@
+/* AboutPage.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+.about-page {
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('./AboutBackground.jpg');
+  background-size: cover;
+  background-position: center;
+  z-index: -1; 
+  animation: scaleBackground 1s ease forwards; 
+}
+
+@keyframes scaleBackground {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05); 
+  }
+}
+
+.text-container {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 800px;
+  text-align: center;
+  z-index: 1; 
+}
+
+/* Text styles */
+.about-page h2,
+.about-page p,
+.about-page ul li,
+.about-page h3,
+.about-page a {
+  color: #ffffff; 
+}
+
+.about-page h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.about-page p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.about-page ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.about-page ul li {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.about-page h3 {
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+.about-page a {
+  text-decoration: underline;
+}
+
+.about-page a:hover {
+  color: #ccc; 
+}

@@ -1,0 +1,943 @@
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent; 
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Style the scrollbar thumb */
+::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.3); 
+  border-radius: 10px;
+  border: 2px solid transparent; 
+}
+
+/* Hover effect for scrollbar thumb */
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.5); 
+}
+
+.space-effect {
+  animation: spaceEffectAnimation 2s ease-in-out forwards;
+}
+
+@keyframes spaceEffectAnimation {
+  0% {
+    transform: scale(0.5) rotate(45deg) translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2) rotate(180deg) translateX(-50%);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1) rotate(360deg) translateX(0%);
+    opacity: 1;
+  }
+}
+
+button {
+  padding: 10px 20px;
+  margin: 5px;
+  background-color: #2c3e50;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #34495e;
+}
+
+/* Container styles */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; 
+}
+
+.container-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 20px;
+  background-image: url('BackgroundMain.jpg'); 
+  background-size: cover; 
+  background-position: center; 
+  min-height: 100vh; 
+}
+
+/* Footer styles */
+.app-footer {
+  background-color: #343a40;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+.term-container {
+  margin-left: 20%;
+}
+
+.editor-container-three {
+  position: relative;
+  z-index: 2; 
+  width: 83vh;
+}
+
+.element-behind {
+  position: relative; 
+  z-index: 1; 
+}
+
+
+/* Background Container */
+.background-container {
+  background-image: url('BackgroundMain.jpg'); 
+  background-size: cover; 
+  background-position: center; 
+  display: flex;
+  padding: 20px;
+  flex-direction: column;
+  height: 120vh;
+}
+
+
+/* Code Editor Container */
+.code-editor-container {
+  font-family: 'Courier New', Courier, monospace;
+  overflow-y: auto; 
+  padding: 20px;
+  color: white;
+  width: 1200px;
+  position: relative;
+  margin: 0 auto;
+  font-size: 17px;
+}
+
+@keyframes asteroids {
+  0% {
+    transform: translateX(calc(-100% - 30px)) translateY(calc(var(--offset) * 100vh));
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(calc(100vw + 30px + var(--offset) * 100vw)) translateY(calc(var(--offset) * 100vh));
+    opacity: 0;
+  }
+}
+
+.asteroid {
+  position: absolute;
+  width: 30px; 
+  height: 10px; 
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), #f3f3f3); 
+  border-radius: 50%; 
+  overflow: hidden; 
+}
+
+/* Shooting star effect */
+.asteroid::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 220%;
+  top: -50%;
+  left: -50%;
+  background: #f3f3f3; 
+  border-radius: 50%; 
+  animation: shooting-star 1s linear infinite, sparkle 1s ease-in-out infinite alternate;
+}
+
+@keyframes shooting-star {
+  0% {
+    transform: translateX(-50%) translateY(-50%) rotate(45deg) scale(1);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(50%) translateY(50%) rotate(45deg) scale(1.5);
+    opacity: 1;
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+/* Apply animation with different offsets for each asteroid */
+.asteroid:nth-child(1) {
+  --offset: -1; 
+  animation: asteroids 3s linear infinite; 
+}
+
+.asteroid:nth-child(2) {
+  --offset: 0.2; 
+  animation: asteroids 3s linear infinite 1s; 
+}
+
+.asteroid:nth-child(3) {
+  --offset: 0.4; 
+  animation: asteroids 3s linear infinite 2s; 
+}
+
+.asteroid:nth-child(4) {
+  --offset: 0.6; 
+  animation: asteroids 3s linear infinite 3s; 
+}
+
+.asteroid:nth-child(5) {
+  --offset: 0.8; 
+  animation: asteroids 3s linear infinite 4s; 
+}
+
+.stop-animation {
+  animation-play-state: paused !important;
+}
+
+
+/* Apply the fireworks and stars-and-asteroids animations to the header */
+.code-editor-header {
+  font-size: 27px;
+  color: #ffc0cb; 
+  margin-left: 50vh;
+  position: relative; 
+}
+
+.language-select-one {
+  padding: 8px 20px;
+  margin: 5px;
+  border: black;
+  margin-left: 26vh;
+  max-width: fit-content;
+  background: linear-gradient(45deg, #8382ce, #37399e);
+  color: rgb(0, 0, 0);
+  border: 2px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s, border-color 0.3s;
+  font-size: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative; 
+}
+
+/* Adding sparkles using a background image */
+.language-select-one::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"%3E%3Cpath fill="%23ffea00" d="M11.723 4.43l-.897-.897c-.366-.366-.957-.366-1.323 0l-.897.897c-.366.366-.366.957 0 1.323l.897.897c.366.366.957.366 1.323 0l.897-.897c.366-.366.366-.957 0-1.323z"/%3E%3Cpath fill="%23ffea00" d="M11.723 13.547l-.897-.897c-.366-.366-.957-.366-1.323 0l-.897.897c-.366.366-.366.957 0 1.323l.897.897c.366.366.957.366 1.323 0l.897-.897c.366-.366.366-.957 0-1.323z"/%3E%3Cpath fill="%23ffea00" d="M8.275 8.275l-.897-.897c-.366-.366-.957-.366-1.323 0l-.897.897c-.366.366-.366.957 0 1.323l.897.897c.366.366.957.366 1.323 0l.897-.897c.366-.366.366-.957 0-1.323z"/%3E%3Cpath fill="%23ffea00" d="M14.17 14.17l-.897-.897c-.366-.366-.957-.366-1.323 0l-.897.897c-.366.366-.366.957 0 1.323l.897.897c.366.366.957.366 1.323 0l.897-.897c.366-.366.366-.957 0-1.323z"/%3E%3Cpath fill="%23ffea00" d="M6.827 11.723l-.897-.897c-.366-.366-.957-.366-1.323 0l-.897.897c-.366.366-.366.957 0 1.323l.897.897c.366.366.957.366 1.323 0l.897-.897c.366-.366.366-.957 0-1.323z"/%3E%3C/svg%3E');
+  background-size: 100% 100%;
+  z-index: 1;
+  transition: top 0.3s; /* Adding transition for smooth sliding */
+}
+
+.language-select-one:hover::after {
+  top: -20px; /* Adjusting the position on hover */
+}
+
+.language-select-one:hover {
+  background: linear-gradient(45deg, #803697, #6a6bb1);
+  border-color: #fff;
+}
+
+/* Adding a subtle animation for extra flair */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.language-select-one:hover {
+  animation: pulse 0.5s infinite alternate;
+}
+
+.plugin-page {
+  margin-left: -100%;
+  transition: margin-left 0.3s ease;
+  margin-top: 23px;
+}
+
+.plugin-input {
+  position: relative; /* Ensure it's positioned relative */
+  width: 37vh;
+}
+
+.plugin-management {
+  position: relative;
+  top: -42.5px; /* Adjust this value to move the element up */
+  margin-bottom: 40px;
+  color: white;
+  margin-top: 10px;
+  margin-left: 56.5vh;
+  display: flex;
+  align-items: center;
+}
+
+.toggle-text {
+  margin-right: 40px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  margin-right: 10px; /* Adjusted to prevent movement */
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+@keyframes zoomIn {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0) translateY(-50%);
+  }
+}
+
+.toggle-text.zoom-off span {
+  animation: zoomOff 1s forwards;
+}
+
+@keyframes zoomOff {
+  0% {
+    transform: scale(1) translateY(0) translateX(0);
+  }
+  100% {
+    transform: scale(10) translateY(-100vh) translateX(100vw);
+  }
+}
+
+.toggle-text.zoom-in {
+  animation: zoomIn 0.5s forwards;
+}
+
+.toggle-text.zoom-off {
+  animation: zoomOff 5s forwards;
+}
+
+.toggle-text span {
+  transform: rotate(90deg);
+  font-size: 3em; /* Adjust the font size to make the rocket ship bigger */
+}
+
+
+@keyframes circularMotion {
+  0% {
+    transform: translateX(0) translateY(-50px);
+  }
+  25% {
+    transform: translateX(50px) translateY(0);
+  }
+  50% {
+    transform: translateX(0) translateY(50px);
+  }
+  75% {
+    transform: translateX(-50px) translateY(0);
+  }
+  100% {
+    transform: translateX(0) translateY(-50px);
+  }
+}
+
+.custom-button {
+  font-family: 'Courier New';
+  margin-left: 59vh;
+  font-size: 13px;
+  width: 100px; 
+  height: 100px; 
+  border-radius: 50%; 
+  background-image: url('earth.png'); 
+  background-size: cover; 
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer; 
+  border: none; 
+  animation: circularMotion 5s infinite linear; 
+  font-weight: bold;
+  color: black;
+}
+
+.custom-button:hover {
+  transform: scale(1.1); /* Scale the button on hover for a slight zoom effect */
+}
+
+/* Adjust the size and color of the icon */
+.custom-button i {
+  font-size: 24px;
+  color: white;
+  transition: transform 0.3s ease; /* Add transition for icon */
+}
+
+
+.custom-button:hover i {
+  transform: rotate(90deg); /* Rotate the icon on hover */
+}
+
+.Show-file-vis {
+  font-size: 24px;
+  color: white;
+  top: 45vh;
+}
+
+/* Adjust the size and color of the icon */
+.Show-file-vis i {
+  font-size: 24px;
+  color: white;
+}
+
+.file-navigation-panel {
+  font-size: 20px;
+  margin-left: 26.5vh; 
+  color: #eae8d5; 
+  text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.5); 
+}
+
+.file-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.file-list li {
+  margin-bottom: 10px;
+}
+
+.file-list li span {
+  margin-right: 10px;
+}
+
+button {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #ddd;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+}
+
+/* Main content styles */
+.app-main {
+  display: flex;
+  flex: 1;
+  justify-content: center; 
+  align-items: flex-start; 
+}
+
+.button-container {
+  display: flex; 
+  max-width: fit-content;
+  justify-content: flex-end; 
+  margin: 0 auto; 
+  padding: 0 20px;
+}
+
+/* Define a keyframe animation for intermittent sparkle effect */
+@keyframes intermittent-sparkle {
+  0%, 20%, 40%, 60%, 80%, 100% {
+    text-shadow: 0 0 1px rgb(255, 217, 0), 0 0 2px rgba(255, 215, 0, 0.5), 0 0 3px rgba(255, 215, 0, 0.5), 0 0 4px rgba(255, 215, 0, 0.5), 0 0 5px rgba(255, 215, 0, 0.5);
+  }
+  10% {
+    text-shadow: none; /* Stop the sparkle effect after 10% of the animation */
+  }
+}
+
+/* Apply the intermittent sparkle animation to the button text */
+.button-container button {
+  font-family: 'Courier New', Courier, monospace; 
+  padding: 10px 22px; 
+  margin: 5px;
+  font-size: 20px;
+  background-color: transparent; /* Transparent background */
+  color: #ffffff; 
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease; 
+  font-weight: bold; 
+  animation: intermittent-sparkle 6s linear infinite;
+}
+
+
+.button-container button:hover {
+  background-color: #001f3f; /* Dark blue background color */
+  color: #ffffff; /* White text color on hover */
+}
+
+.button-container button:focus {
+  outline: none; /* Remove default focus outline */
+}
+
+.button-container button:active {
+  transform: translateY(1px); /* Add a slight press effect */
+}
+
+
+.high-contrast-button-four 
+.dependency-options-button,
+.toggle-theme-style-button,
+.toggle-key-bindings-button {
+  padding: 10px 20px;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dependency-options-button:hover,
+.toggle-theme-style-button:hover,
+.toggle-key-bindings-button:hover {
+  background-color: #34495e;
+}
+
+.editor-buttons {
+  background: linear-gradient(to right, #8e2de2, #4a00e0); /* Gradient background */
+  color: #ffffff; 
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px; 
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); 
+  position: relative;
+  overflow: hidden;
+}
+
+.editor-buttons::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: all 0.5s ease;
+  border-radius: 50%;
+  z-index: 0;
+  transform: translate(-50%, -50%);
+}
+
+.editor-buttons:hover::before {
+  width: 500%;
+  height: 500%;
+  transition: all 0.5s ease-out;
+}
+
+.editor-buttons span {
+  position: relative;
+  z-index: 1;
+}
+
+.editor-buttons:hover {
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+  }
+  
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+  }
+  
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+
+
+.pre {
+  padding: 1em;
+  margin: 0.5em 0px;
+  overflow: auto;
+  background: rgb(46, 52, 64);
+  color: rgb(248, 248, 242);
+  font-family: "Fira Code", Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  overflow-wrap: normal;
+  line-height: 1.5;
+  tab-size: 4;
+  hyphens: none;
+  border-radius: 0.3em;
+  height: 10%;
+  width: 10%;
+  min-height: 70vh; 
+}
+
+
+.chat-container {
+  width: 100%;
+  height: 124.1vh; /* Set the height to 90% of the viewport height */
+  overflow-y: auto;
+  background-image: url('BackgroundMain.jpg'); /* Set default background */
+}
+
+/* Add background styles */
+.background-enabled .chat-container {
+  background-image: url('BackgroundMain.jpg'); /* Set the background image */
+  background-size: cover; /* Cover the entire container */
+  background-position: center; /* Center the background image */
+}
+
+.header {
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center;
+  border-radius: 8px;
+}
+
+
+.chat-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0 10px 0 0; /* Adjust left margin */
+}
+
+
+/* theme-buttons */
+.theme-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  margin-bottom: -15px;
+  overflow-x: auto; 
+}
+
+.theme-button {
+  padding: 8px 16px;
+  background-color: #666;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 5px;
+}
+
+.theme-button:hover {
+  background-color: #555;
+}
+
+/* editor-container */
+.editor-container {
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 20px;
+  background-color: #ffffff; /* Default background color */
+  color: #000000; /* Default text color */
+  font-family: Arial, sans-serif; /* Default font family */
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1); /* Default box shadow */
+}
+
+/* Add background styles */
+.background-enabled .editor-container {
+  background-image: url('BackgroundMain.jpg'); /* Set the background image */
+  background-size: cover; /* Cover the entire container */
+  background-position: center; /* Center the background image */
+}
+
+/* user-inputs */
+.user-inputs {
+  margin-bottom: 20px;
+}
+
+.delete-message {
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+}
+.email-input,
+.search-input {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 100%; /* Make inputs fill the available width */
+  box-sizing: border-box; /* Include padding and border in the width */
+  margin-bottom: 10px; /* Add some bottom margin for separation */
+}
+
+.email-input::placeholder,
+.search-input::placeholder {
+  color: #999; /* Placeholder text color */
+}
+
+.avatar-selected-message {
+  color :white;
+}
+
+.avatar-options {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 60px; /* Increase avatar size */
+  height: 60px;
+  margin-bottom: 10px;
+  border-radius: 50%;
+  margin-right: 15px; /* Increase spacing between avatars */
+  cursor: pointer;
+  object-fit: cover;
+  border: 2px solid #fff; /* Add a white border */
+  transition: transform 0.3s ease, border-color 0.3s ease; /* Add transition effects */
+}
+
+.avatar:hover {
+  opacity: 0.9; /* Reduce opacity on hover */
+  transform: scale(1.05); /* Enlarge avatar on hover */
+  border-color: #ccc; /* Change border color on hover */
+}
+
+.avatar-text {
+  color: #fff; /* Set text color to white */
+  font-size: 20px; /* Adjust font size as needed */
+  font-weight: bold; /* Apply bold font weight */
+  text-align: center; /* Center align the text */
+  text-transform: uppercase; /* Convert text to uppercase */
+  line-height: 60px; /* Vertically center the text within the avatar */
+}
+
+/* messages-container */
+.messages-container {
+  flex-grow: 1;
+  border: 1px solid #ccc;
+  padding: 20px;
+  overflow-y: auto;
+  Height: 297px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.message {
+  margin-bottom: 20px;
+}
+
+.reactions {
+  display: flex;
+  margin-top: 5px;
+}
+
+.reaction {
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.username {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.reaction-options {
+  margin-top: 10px;
+}
+
+.message-text {
+  margin-left: 10px; /* Adjusted from 60px for better alignment */
+}
+
+.extra-info {
+  display: flex;
+  margin-top: 5px;
+  font-size: 12px;
+  color: #666;
+}
+
+.avatar-name {
+  margin-right: 10px;
+}
+
+.timestamp {
+  margin-right: 10px;
+}
+
+.attachments {
+  margin-left: 10px; /* Adjusted from 60px for better alignment */
+  margin-top: -130px;
+  margin-left: 200px;
+}
+
+.file-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+/* message-input */
+.message-input {
+  display: flex;
+  height: 68.5vh;
+  flex-direction: column; /* Arrange items vertically */
+  align-items: flex-start; /* Align items to the start of the container */
+  margin-top: 20px; /* Added margin for better separation */
+}
+
+.new-message-input {
+  flex-grow: 1;
+  width: 55vh; /* Ensure the textarea takes up the available width */
+  height: 30px; /* Adjust the height to make it smaller */
+  margin-bottom: 10px; /* Add some space below the textarea */
+  color: white;
+}
+
+
+.message-placeholder {
+  color: #999; /* Placeholder text color */
+  margin-bottom: 10px; /* Add some space below the placeholder */
+}
+
+.file-input {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc; /* Add a border for better visibility */
+  border-radius: 5px; /* Add rounded corners for a softer look */
+  padding: 8px; /* Add some padding for spacing */
+  width: fit-content; /* Set the width to fit its content */
+}
+
+.file-input label {
+  background-color: #666;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-right: 10px; /* Adjusted margin for better spacing */
+}
+
+.file-input label:hover {
+  background-color: #555;
+}
+
+.file-input input[type="file"] {
+  display: none;
+}
+
+
+/* emoji-picker */
+.emoji-picker {
+  font-size: 24px;
+  margin-bottom: 10px;
+  height: auto; /* Set height to auto to adjust based on content */
+}
+
+/* formatting buttons */
+.message-input button {
+  background-color: #666;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.message-input button:hover {
+  background-color: #555;
+}
+
+.editor-buttons {
+  background-color: #2c3e50;
+}
+
+.auth {
+  color: white;
+  background-color: transparent; /* Set background color as transparent */
+  padding: 20px;
+  box-shadow: none; /* Remove box shadow for the background */
+}
+
+.auth-background {
+  /* Background styles */
+  background: transparent; /* Adjust background color as needed */
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  z-index: 1; /* Set z-index higher than other elements to ensure it's in front */
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start; /* Adjust vertical alignment */
+  margin-top: -75.5px; /* Move the component up */
+}
+
